@@ -1,0 +1,78 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<dom-module id="landing-logo">
+
+  <template>
+    <div class="LandingLogo">
+      <div class="LandingLogo-icon">
+        <div class="u-background-blue u-width-85"></div>
+        <div class="u-background-red u-width-100"></div>
+        <div class="u-background-pink u-width-85"></div>
+        <div class="u-background-green u-width-70"></div>
+      </div>
+      <div class="LandingLogo-text">
+        <strong>Modern</strong> Developer
+      </div>
+    </div>
+  </template>
+
+  <style>
+    .LandingLogo {
+      display: flex;
+    }
+
+    .LandingLogo-icon {
+      width: 62px;
+      margin-right: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .LandingLogo-icon div {
+      height: 10px;
+      margin-bottom: 3px;
+    }
+
+    .LandingLogo-text {
+      font-size: 32px;
+      font-weight: 100;
+      font-family: Roboto Slab, Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    .u-background-blue {
+      background-color: rgb(75, 194, 212);
+    }
+
+    .u-background-red {
+      background-color: rgb(245, 122, 128);
+    }
+
+    .u-background-pink {
+      background-color: rgb(243, 132, 186);
+    }
+
+    .u-background-green {
+      background-color: rgb(55, 215, 129);
+    }
+
+    .u-width-100 {
+      width: 100%;
+    }
+
+    .u-width-85 {
+      width: 85%;
+    }
+
+    .u-width-70 {
+      width: 70%;
+    }
+  </style>
+
+  <script>
+    Polymer({
+      is: 'landing-logo'
+    });
+  </script>
+
+</dom-module>

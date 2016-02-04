@@ -1,0 +1,14 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "devServer.js",
+  "devDependencies": {
+    "express": "^4.13.4"
+  },
+  "scripts": {
+    "start": "node devServer.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

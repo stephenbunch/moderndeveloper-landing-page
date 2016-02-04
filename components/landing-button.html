@@ -1,0 +1,107 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<dom-module id="landing-button">
+
+  <template>
+    <div class$="LandingButton LandingButton--{{size}} LandingButton--{{color}}">
+      <paper-button class="LandingButton-button" id="button">
+        <div class="LandingButton-title">
+          <content select=".title"></content>
+        </div>
+      </paper-button>
+      <div class="LandingButton-body" id="body">
+        <div class="LandingButton-bodyContent">
+          <content select=".body"></content>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <style>
+    .LandingButton {
+      margin: 0 0 10px;
+    }
+
+    .LandingButton-button {
+      border-radius: 0;
+      color: #fff;
+      text-transform: none;
+      font-family: Roboto Slab, Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 100;
+      width: 100%;
+      margin: 0;
+    }
+
+    .LandingButton--large .LandingButton-button {
+      height: 140px;
+      font-size: 34px;
+    }
+
+    .LandingButton--small .LandingButton-button {
+      height: 100px;
+      font-size: 24px;
+    }
+
+    .LandingButton-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .LandingButton--blue .LandingButton-button,
+    .LandingButton--blue .LandingButton-body {
+      background-color: rgb(75, 194, 212);
+    }
+
+    .LandingButton--red .LandingButton-button,
+    .LandingButton--red .LandingButton-body {
+      background-color: rgb(245, 122, 128);
+    }
+
+    .LandingButton--pink .LandingButton-button,
+    .LandingButton--pink .LandingButton-body {
+      background-color: rgb(243, 132, 186);
+    }
+
+    .LandingButton--green .LandingButton-button,
+    .LandingButton--green .LandingButton-body {
+      background-color: rgb(55, 215, 129);
+    }
+
+    .LandingButton--purple .LandingButton-button,
+    .LandingButton--purple .LandingButton-body {
+      background-color: rgb(204, 140, 246);
+    }
+
+    .LandingButton-body {
+      box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.2);
+      padding: 50px 0;
+    }
+
+    .LandingButton-bodyContent {
+      width: 60%;
+      margin: 0 auto;
+    }
+  </style>
+
+  <script>
+    Polymer({
+      is: 'landing-button',
+
+      ready: function() {
+        this.$.button.onclick = this._onButtonClick.bind(this);
+        this.$.body.style.display = 'none'
+      },
+
+      _onButtonClick: function() {
+        if (this.$.body.style.display) {
+          this.$.body.style.display = '';
+        } else {
+          this.$.body.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+</dom-module>
