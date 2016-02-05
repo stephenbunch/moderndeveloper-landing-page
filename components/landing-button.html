@@ -3,13 +3,18 @@
 <dom-module id="landing-button">
 
   <template>
-    <div class$="LandingButton LandingButton--{{size}} LandingButton--{{color}}">
-      <paper-button class="LandingButton-button" id="button">
+    <div
+      class$="LandingButton LandingButton--{{size}} LandingButton--{{color}}"
+      on-mouseleave="_onMouseLeave">
+      <paper-button
+        id="button"
+        class="LandingButton-button"
+        on-mouseenter="_onMouseEnter">
         <div class="LandingButton-title">
           <content select=".title"></content>
         </div>
       </paper-button>
-      <div class="LandingButton-body" id="body">
+      <div id="body" class="LandingButton-body">
         <div class="LandingButton-bodyContent">
           <content select=".body"></content>
         </div>
@@ -76,30 +81,48 @@
 
     .LandingButton-body {
       box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.2);
-      padding: 50px 0;
+      overflow: hidden;
     }
 
     .LandingButton-bodyContent {
       width: 60%;
       margin: 0 auto;
+      padding: 50px 0;
     }
   </style>
 
+  <script src="/bower_components/gsap/src/minified/TweenMax.min.js"></script>
   <script>
     Polymer({
       is: 'landing-button',
 
       ready: function() {
-        this.$.button.onclick = this._onButtonClick.bind(this);
-        this.$.body.style.display = 'none'
+        this._expandBody = TweenMax.from(this.$.body, 0.5, {
+          height: 0,
+          ease: Power1.easeInOut
+        }).pause();
+        this._shrinkTitle = TweenMax.to(this.$.button, 0.5, {
+          height: this.getAttribute('size') === 'large' ? 75 : 60,
+          ease: Power1.easeInOut
+        }).pause();
       },
 
-      _onButtonClick: function() {
-        if (this.$.body.style.display) {
-          this.$.body.style.display = '';
-        } else {
-          this.$.body.style.display = 'none';
-        }
+      shrink: function() {
+        this._shrinkTitle.play();
+      },
+
+      expand: function() {
+        this._shrinkTitle.reverse();
+      },
+
+      _onMouseEnter: function() {
+        this._expandBody.play();
+        this._shrinkTitle.play();
+      },
+
+      _onMouseLeave: function() {
+        this._expandBody.reverse();
+        this._shrinkTitle.reverse();
       }
     });
   </script>

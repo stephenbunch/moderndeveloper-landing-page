@@ -2,9 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Modern Developer</title>
 
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="/bower_components/gsap/src/minified/TweenMax.min.js"></script>
     <link rel="import" href="/bower_components/paper-button/paper-button.html">
     <link rel="import" href="/components/landing-button.html">
     <link rel="import" href="/components/landing-logo.html">
@@ -29,20 +30,67 @@
         <landing-button class="u-width-85" color="blue" size="large">
           <div class="title"><strong>Learn .</strong>&nbsp;Modern Developer</div>
           <div class="body">
-            hello world
+            Bacon ipsum dolor amet venison ham shoulder pork chop doner shank.
+            Filet mignon kevin pancetta frankfurter fatback, andouille ham hock
+            corned beef shank spare ribs t-bone. Ground round alcatra corned
+            beef, ribeye ham hock jerky chicken pancetta chuck shank tenderloin.
+            Turducken picanha tongue, shankle short ribs ham hock venison
+            biltong tail cow tenderloin pastrami turkey. Swine chicken
+            prosciutto, ribeye drumstick venison picanha beef kevin brisket pork
+            chop fatback short loin ham hock.
           </div>
         </landing-button>
         <landing-button class="u-width-100" color="red" size="large">
           <div class="title"><strong>Profiles .</strong>&nbsp;Modern Developer</div>
+          <div class="body">
+            Bacon ipsum dolor amet venison ham shoulder pork chop doner shank.
+            Filet mignon kevin pancetta frankfurter fatback, andouille ham hock
+            corned beef shank spare ribs t-bone. Ground round alcatra corned
+            beef, ribeye ham hock jerky chicken pancetta chuck shank tenderloin.
+            Turducken picanha tongue, shankle short ribs ham hock venison
+            biltong tail cow tenderloin pastrami turkey. Swine chicken
+            prosciutto, ribeye drumstick venison picanha beef kevin brisket pork
+            chop fatback short loin ham hock.
+          </div>
         </landing-button>
         <landing-button class="u-width-85" color="pink" size="large">
           <div class="title"><strong>Encyclopedia .</strong>&nbsp;Modern Developer</div>
+          <div class="body">
+            Bacon ipsum dolor amet venison ham shoulder pork chop doner shank.
+            Filet mignon kevin pancetta frankfurter fatback, andouille ham hock
+            corned beef shank spare ribs t-bone. Ground round alcatra corned
+            beef, ribeye ham hock jerky chicken pancetta chuck shank tenderloin.
+            Turducken picanha tongue, shankle short ribs ham hock venison
+            biltong tail cow tenderloin pastrami turkey. Swine chicken
+            prosciutto, ribeye drumstick venison picanha beef kevin brisket pork
+            chop fatback short loin ham hock.
+          </div>
         </landing-button>
         <landing-button class="u-width-70" color="green" size="large">
           <div class="title"><strong>Knewro .</strong>&nbsp;Modern Developer</div>
+          <div class="body">
+            Bacon ipsum dolor amet venison ham shoulder pork chop doner shank.
+            Filet mignon kevin pancetta frankfurter fatback, andouille ham hock
+            corned beef shank spare ribs t-bone. Ground round alcatra corned
+            beef, ribeye ham hock jerky chicken pancetta chuck shank tenderloin.
+            Turducken picanha tongue, shankle short ribs ham hock venison
+            biltong tail cow tenderloin pastrami turkey. Swine chicken
+            prosciutto, ribeye drumstick venison picanha beef kevin brisket pork
+            chop fatback short loin ham hock.
+          </div>
         </landing-button>
         <landing-button class="u-width-55" color="purple" size="small">
           <div class="title"><strong>Know .</strong>&nbsp;Modern Developer</div>
+          <div class="body">
+            Bacon ipsum dolor amet venison ham shoulder pork chop doner shank.
+            Filet mignon kevin pancetta frankfurter fatback, andouille ham hock
+            corned beef shank spare ribs t-bone. Ground round alcatra corned
+            beef, ribeye ham hock jerky chicken pancetta chuck shank tenderloin.
+            Turducken picanha tongue, shankle short ribs ham hock venison
+            biltong tail cow tenderloin pastrami turkey. Swine chicken
+            prosciutto, ribeye drumstick venison picanha beef kevin brisket pork
+            chop fatback short loin ham hock.
+          </div>
         </landing-button>
         <div class="LandingForm u-flex-horizontal u-flex-align-center u-margin-top-50">
           <span class="u-margin-right-20">Get First Access</span>
@@ -57,5 +105,41 @@
         <a href="mailto:support@moderndeveloper.com" class="Footer-link">support@moderndeveloper.com</a>
       </div>
     </footer>
+    <script>
+      (function() {
+        new TimelineMax()
+          .staggerFromTo('landing-button, .LandingForm', 1, {
+            opacity: 0,
+            y: 500,
+            scale: 0,
+            ease: Expo.easeOut
+          }, {
+            opacity: 1,
+            y: 0,
+            scale: 0.9
+          }, 0.25).to('landing-button, .LandingForm', 0.8, {
+            scale: 1,
+            delay: 0.2,
+            ease: Circ.easeOut
+          });
+        var buttons = Polymer.dom(document).querySelectorAll('landing-button');
+        buttons.forEach(function(button) {
+          button.addEventListener('mouseenter', function() {
+            buttons.forEach(function(other) {
+              if (other !== button) {
+                other.shrink();
+              }
+            });
+          });
+          button.addEventListener('mouseleave', function() {
+            buttons.forEach(function(other) {
+              if (other !== button) {
+                other.expand();
+              }
+            });
+          });
+        });
+      }());
+    </script>
   </body>
 </html>

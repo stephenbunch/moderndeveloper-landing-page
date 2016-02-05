@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
+    "gsap": "~1.18.2",
     "paper-button": "PolymerElements/paper-button#~1.0.11",
     "polymer": "Polymer/polymer#^1.2.0"
   }
