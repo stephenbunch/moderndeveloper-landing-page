@@ -132,9 +132,12 @@
                 other.shrink();
                 top += other.collapsedHeight;
               } else {
+                // Scroll so that the mouse is in the center of the expanded
+                // button. If scrolling to the center causes the button to run
+                // off the screen, then only scroll to the top of the button.
                 TweenMax.to(window, 0.5, {
                   scrollTo: {
-                    y: window.scrollY + Math.abs(e.pageY - (top + (button.expandedHeight / 2)))
+                    y: Math.min(window.scrollY + Math.abs(e.pageY - (top + (button.expandedHeight / 2))), top)
                   },
                   ease: Power1.easeInOut
                 });
