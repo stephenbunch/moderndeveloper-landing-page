@@ -10,5 +10,8 @@
     "start": "node devServer.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "5.4.0"
+  }
 }
