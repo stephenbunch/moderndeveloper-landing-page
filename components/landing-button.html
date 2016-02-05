@@ -100,14 +100,14 @@
       is: 'landing-button',
 
       ready: function() {
-        this.collapsedHeight = this.getAttribute('size') === 'large' ? 75 : 60;
-        this.expandedHeight = null;
+        this._collapsedHeight = this.getAttribute('size') === 'large' ? 75 : 60;
+        this._expandedHeight = null;
         this._expandBody = TweenMax.from(this.$.body, 0.5, {
           height: 0,
           ease: Power1.easeInOut
         }).pause();
         this._shrinkTitle = TweenMax.to(this.$.button, 0.5, {
-          height: this.collapsedHeight,
+          height: this._collapsedHeight,
           ease: Power1.easeInOut
         }).pause();
       },
@@ -120,12 +120,21 @@
         this._shrinkTitle.reverse();
       },
 
-      _onMouseEnter: function() {
-        if (this.expandedHeight === null) {
+      getCollapsedHeight() {
+        return this._collapsedHeight;
+      },
+
+      getExpandedHeight() {
+        if (this._expandedHeight === null) {
           this.$.body.style.height = '';
-          this.expandedHeight = this.$.root.offsetHeight;
+          this._expandedHeight = this._collapsedHeight + this.$.body.offsetHeight;
           this.$.body.style.height = '0px';
         }
+        return this._expandedHeight;
+      },
+
+      _onMouseEnter: function() {
+
         this._expandBody.play();
         this._shrinkTitle.play();
       },
