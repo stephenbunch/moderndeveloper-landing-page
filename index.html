@@ -6,6 +6,7 @@
 
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="/bower_components/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="/bower_components/gsap/src/minified/plugins/ScrollToPlugin.min.js"></script>
     <link rel="import" href="/bower_components/paper-button/paper-button.html">
     <link rel="import" href="/components/landing-button.html">
     <link rel="import" href="/components/landing-logo.html">
@@ -124,10 +125,19 @@
           });
         var buttons = Polymer.dom(document).querySelectorAll('landing-button');
         buttons.forEach(function(button) {
-          button.addEventListener('mouseenter', function() {
+          button.addEventListener('mouseenter', function(e) {
+            var top = buttons[0].offsetTop;
             buttons.forEach(function(other) {
               if (other !== button) {
                 other.shrink();
+                top += other.collapsedHeight;
+              } else {
+                TweenMax.to(window, 0.5, {
+                  scrollTo: {
+                    y: window.scrollY + Math.abs(e.pageY - (top + (button.expandedHeight / 2)))
+                  },
+                  ease: Power1.easeInOut
+                });
               }
             });
           });

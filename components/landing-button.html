@@ -4,6 +4,7 @@
 
   <template>
     <div
+      id="root"
       class$="LandingButton LandingButton--{{size}} LandingButton--{{color}}"
       on-mouseleave="_onMouseLeave">
       <paper-button
@@ -99,12 +100,14 @@
       is: 'landing-button',
 
       ready: function() {
+        this.collapsedHeight = this.getAttribute('size') === 'large' ? 75 : 60;
+        this.expandedHeight = null;
         this._expandBody = TweenMax.from(this.$.body, 0.5, {
           height: 0,
           ease: Power1.easeInOut
         }).pause();
         this._shrinkTitle = TweenMax.to(this.$.button, 0.5, {
-          height: this.getAttribute('size') === 'large' ? 75 : 60,
+          height: this.collapsedHeight,
           ease: Power1.easeInOut
         }).pause();
       },
@@ -118,6 +121,11 @@
       },
 
       _onMouseEnter: function() {
+        if (this.expandedHeight === null) {
+          this.$.body.style.height = '';
+          this.expandedHeight = this.$.root.offsetHeight;
+          this.$.body.style.height = '0px';
+        }
         this._expandBody.play();
         this._shrinkTitle.play();
       },
