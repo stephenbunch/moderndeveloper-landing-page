@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Modern Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="/bower_components/gsap/src/minified/TweenMax.min.js"></script>
@@ -14,20 +15,20 @@
     <link rel="stylesheet" href="/index.css" />
     <link href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300|Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic" rel="stylesheet" type="text/css">
   </head>
-  <body class="u-flex-vertical u-height-100">
-    <div class="u-margin-left-50 u-margin-right-50">
-      <header class="u-flex-horizontal u-flex-justify-space-between u-margin-top-50">
-        <landing-logo></landing-logo>
-        <div class="u-text-right">
+  <body class="u-flex-vertical u-height-full">
+    <div class="Container">
+      <header class="Header u-space-top">
+        <landing-logo class="Header-logo"></landing-logo>
+        <div class="Header-sub">
           <em>
             <span class="u-text-blue">The most</span>
-            <span class="u-text-red">ambitious platform for developers</span><br>
+            <span class="u-text-red">ambitious platform for developers</span>
             <span class="u-text-pink">and for</span>
             <span class="u-text-green">learning Programming.</span>
           </em>
         </div>
       </header>
-      <div class="u-flex-vertical u-flex-align-center u-margin-top-50">
+      <div class="u-flex-vertical u-flex-align-center u-space-top">
         <landing-button class="u-width-85" color="blue" size="large">
           <div class="title"><strong>Learn .</strong>&nbsp;Modern Developer</div>
           <div class="body">
@@ -93,15 +94,15 @@
             chop fatback short loin ham hock.
           </div>
         </landing-button>
-        <div class="LandingForm u-flex-horizontal u-flex-align-center u-margin-top-50">
-          <span class="u-margin-right-20">Get First Access</span>
-          <input placeholder="Your Email Address" class="LandingForm-input u-margin-right-20" />
+        <div class="LandingForm u-space-top">
+          <span class="u-space-right-small u-space-bottom-small u-sm-space-bottom-none">Get First Access</span>
+          <input placeholder="Your Email Address" class="LandingForm-input u-space-right-small" />
           <paper-button class="u-background-blue LandingForm-button">GO</paper-button>
         </div>
       </div>
     </div>
-    <footer class="Footer u-flex-horizontal u-flex-align-center u-flex-justify-center u-margin-top-50">
-      <div>
+    <footer class="Footer u-space-top">
+      <div class="u-text-center">
         <span>&copy; 2016 . Modern Developer .</span>
         <a href="mailto:support@moderndeveloper.com" class="Footer-link">support@moderndeveloper.com</a>
       </div>
@@ -111,7 +112,7 @@
         new TimelineMax()
           .staggerFromTo('landing-button, .LandingForm', 1, {
             opacity: 0,
-            y: 500,
+            y: 150,
             scale: 0,
             ease: Expo.easeOut
           }, {

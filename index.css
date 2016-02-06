@@ -23,10 +23,6 @@ html, body {
   text-align: center;
 }
 
-.u-text-right {
-  text-align: right;
-}
-
 .u-width-85 {
   width: 85%;
 }
@@ -39,7 +35,7 @@ html, body {
   width: 55%;
 }
 
-.u-height-100 {
+.u-height-full {
   height: 100%;
 }
 
@@ -61,36 +57,77 @@ html, body {
   align-items: center;
 }
 
-.u-flex-justify-center {
-  justify-content: center;
+.Container {
+  margin: 0 10px;
 }
 
-.u-flex-justify-space-between {
-  justify-content: space-between;
+.Header {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.u-margin-top-50 {
-  margin-top: 50px;
+.Header-logo {
+  flex-grow: 1;
 }
 
-.u-margin-left-50 {
-  margin-left: 50px;
+.Header-sub {
+  text-align: center;
+  margin-top: 20px;
 }
 
-.u-margin-right-50 {
-  margin-right: 50px;
+.u-space-top {
+  margin-top: 30px;
 }
 
-.u-margin-right-20 {
-  margin-right: 20px;
+.u-space-bottom-small {
+  margin-bottom: 10px;
 }
 
-.u-opacity-0 {
-  opacity: 0;
+.u-space-right-small {
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .u-space-top {
+    margin-top: 50px;
+  }
+
+  .u-space-right-small {
+    margin-right: 20px;
+  }
+
+  .u-sm-space-bottom-none {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .Container {
+    margin: 0 50px;
+  }
+
+  .Header {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .Header-logo {
+    flex-shrink: 0;
+  }
+
+  .Header-sub {
+    text-align: right;
+    width: 320px;
+    margin-top: 0;
+  }
 }
 
 .LandingForm {
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .LandingForm-input {
@@ -112,6 +149,9 @@ html, body {
   font-size: 14px;
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Footer-link {

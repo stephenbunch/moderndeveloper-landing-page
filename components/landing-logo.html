@@ -19,6 +19,8 @@
   <style>
     .LandingLogo {
       display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .LandingLogo-icon {
@@ -38,6 +40,14 @@
       font-size: 32px;
       font-weight: 100;
       font-family: Roboto Slab, Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1em;
+      flex-basis: 0;
+    }
+
+    @media (min-width: 768px) {
+      .LandingLogo-text {
+        flex-basis: auto;
+      }
     }
 
     .u-background-blue {
